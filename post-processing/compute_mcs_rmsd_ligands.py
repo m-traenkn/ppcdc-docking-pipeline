@@ -7,7 +7,7 @@ import pandas as pd
 
 # --- Configuration ---
 reference_file = "reference.pdb"  # single ligand pdb file
-docked_folder = "GninaOut_autobox_FMN" # sigle ligand docking files
+docked_folder = "GninaOut_autobox_FMN" # single ligand docking files
 output_csv = "rmsd_results.csv"
 
 # --- Load and prepare reference ligand ---
@@ -70,6 +70,7 @@ for fname in sorted(os.listdir(docked_folder)):
 # --- Save results ---
 df = pd.DataFrame(results)
 df.to_csv(output_csv, index=False)
+
 
 
 
