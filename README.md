@@ -14,7 +14,7 @@ Specific procedure:
 2. docking -> *runDockingPar_Autobox.py* + run_docking_autobox.sh + all dependent scripts
 - uses filtered_input.csv, 1QZU_prediction_FMN_substrate.pdb
 
-3. combine cleaned protein with docked ligands
+3. combine cleaned protein with docked ligands: *combine_prot_lig.py*
 
 4. post-processing
 - filter affinity: *get_and_filter_affinities.py* -> extract affinities, filter molecules with higher affinity than substrate
