@@ -55,8 +55,11 @@ for fname in sorted(os.listdir(docked_folder)):
         rmsd = rdMolAlign.AlignMol(dock, ref, atomMap=atom_map)
         
         #print(f"MCS size: {len(atom_map)} atoms | RMSD: {rmsd:.3f}")
+
+        ligand_id = fname.replace("_docked.pdb", "")
+        
         results.append({
-            "ID": fname,
+            "ID": ligand_id,
             "RMSD": rmsd,
             "mcs": len(atom_map)
         })
@@ -67,5 +70,6 @@ for fname in sorted(os.listdir(docked_folder)):
 # --- Save results ---
 df = pd.DataFrame(results)
 df.to_csv(output_csv, index=False)
+
 
 
