@@ -7,7 +7,7 @@ import pandas as pd
 # --- Configuration ---
 ref_file = "reference.pdb"   # single eference ligand withput protein
 dock_folder = "GninaOut_autobox_FMN"      # Folder with single docked ligands (docking results)
-output_csv = "ligand_com_distances.csv"
+output_csv = "com_distances.csv"
 
 # --- Helper function to compute center of mass ---
 def center_of_mass(mol):
@@ -47,4 +47,5 @@ for fname in os.listdir(dock_folder):
 # --- Export to CSV ---
 df = pd.DataFrame(results)
 df.to_csv(output_csv, index=False)
+
 
