@@ -6,7 +6,7 @@ from rdkit.Chem import rdMolDescriptors
 import pandas as pd
 
 # --- Configuration ---
-reference_file = "substrate.pdb"  # single ligand pdb file
+reference_file = "reference.pdb"  # single ligand pdb file
 docked_folder = "GninaOut_autobox_FMN" # sigle ligand docking files
 output_csv = "rmsd_results.csv"
 
@@ -70,6 +70,7 @@ for fname in sorted(os.listdir(docked_folder)):
 # --- Save results ---
 df = pd.DataFrame(results)
 df.to_csv(output_csv, index=False)
+
 
 
 
