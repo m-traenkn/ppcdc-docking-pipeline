@@ -8,7 +8,7 @@ import pandas as pd
 # --- Configuration ---
 reference_file = "substrate.pdb"  # single ligand pdb file
 docked_folder = "GninaOut_autobox_FMN" # sigle ligand docking files
-output_csv = "rmsd_results_lig_only.csv"
+output_csv = "rmsd_results.csv"
 
 # --- Load and prepare reference ligand ---
 ref_raw = Chem.MolFromPDBFile(reference_file, removeHs=False) # convert pdb molecule to rdkit object
@@ -67,4 +67,5 @@ for fname in sorted(os.listdir(docked_folder)):
 # --- Save results ---
 df = pd.DataFrame(results)
 df.to_csv(output_csv, index=False)
+
 
