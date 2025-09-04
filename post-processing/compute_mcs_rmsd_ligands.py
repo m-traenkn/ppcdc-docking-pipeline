@@ -57,7 +57,7 @@ for fname in sorted(os.listdir(docked_folder)):
         #print(f"MCS size: {len(atom_map)} atoms | RMSD: {rmsd:.3f}")
         results.append({
             "ID": fname,
-            "rmsd": rmsd,
+            "RMSD": rmsd,
             "mcs": len(atom_map)
         })
     except Exception as e:
@@ -67,3 +67,4 @@ for fname in sorted(os.listdir(docked_folder)):
 # --- Save results ---
 df = pd.DataFrame(results)
 df.to_csv(output_csv, index=False)
+
