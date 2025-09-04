@@ -4,10 +4,9 @@ import re
 import pandas as pd
 
 # === CONFIGURATION ===
-log_folder = 'filtered_ligands_autobox_FMN'   # Folder with *_docking.log
-output_csv = 'affinities_autobox_FMN.csv'     # Save all extracted affinities
-OUTPUT_FILE = "lig_higher_sub_complete.txt"   # List of ligands above threshold
-COMBINED_FOLDER = "combined_complexes_complete"  # Folder containing *_docked_complex.pdb
+log_folder = 'GninaOut_autobox_FMN'   # Folder with *_docking.log
+output_csv = 'affinities_autobox_FMN.csv'    # Save all extracted affinities
+output_txt = "lig_higher_sub_complete.txt"   # List of ligands above threshold
 AFFINITY_THRESHOLD = -6.94                    # Reference affinity to filter against
 
 
@@ -51,4 +50,5 @@ def write_file_list(output_file, filtered_df):
             filename = f"{ligand_id}_docked_complex.pdb"
             out.write(f"{filename}\n")
 
-write_file_list(OUTPUT_FILE, filtered)
+write_file_list(output_txt, filtered)
+
