@@ -1,0 +1,16 @@
+criteria_used,percent_overlap,spearman_rho
+rank_affinity,28.0,-0.23405421079548056
+rank_com,22.0,0.19706380575945792
+rank_plip_1MVN,7.0,-0.6123724356957945
+rank_plip_1QZU_pred,15.0,0.3092947870658709
+"rank_affinity, rank_com",54.0,0.502468124126403
+"rank_affinity, rank_plip_1MVN",42.0,0.17765531020749412
+"rank_affinity, rank_plip_1QZU_pred",54.0,0.19175418953715873
+"rank_com, rank_plip_1MVN",35.0,0.24453781512605044
+"rank_com, rank_plip_1QZU_pred",37.0,0.39236605026078714
+"rank_plip_1MVN, rank_plip_1QZU_pred",29.0,-0.026818350092526685
+"rank_affinity, rank_com, rank_plip_1MVN",75.0,0.8622862673835999
+"rank_affinity, rank_com, rank_plip_1QZU_pred",63.0,0.6042581791123594
+"rank_affinity, rank_plip_1MVN, rank_plip_1QZU_pred",60.0,0.40967320687957753
+"rank_com, rank_plip_1MVN, rank_plip_1QZU_pred",44.0,0.33582352526605114
+"rank_affinity, rank_com, rank_plip_1MVN, rank_plip_1QZU_pred",100.0,1.0
