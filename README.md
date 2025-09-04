@@ -18,7 +18,7 @@ Specific procedure:
 
 4. post-processing
 - filter affinity: *get_and_filter_affinities.py* -> extract affinities, filter molecules with higher affinity than substrate
-- PLIP interactions: plip xmls, *plip_statistics.py* -> compares interactions to reference (1QZU, 1MVN, 6AIM)
+- PLIP interactions: plp xmls, *plip_plots.py*, *plip_score.py* -> compares interactions to reference (1QZU, 1MVN, 6AIM), calculation of PLIP scores
 - COM: *center_of_mass.py* -> calculated the COM distance between docked ligands and reference (needs single ligands without protein)
 - MCS-RMSD: *compute_mcs_rmsd_ligands.py* -> computes MCS and then MCS-RMSD between reference (single substrate without protein) and docked ligand
 - enamine: Predictions_mostSimENAMINE.csv
