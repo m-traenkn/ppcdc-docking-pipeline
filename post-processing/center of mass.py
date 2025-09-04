@@ -41,9 +41,10 @@ for fname in os.listdir(dock_folder):
     
     results.append({
         "ID": ligand_id,
-        "distance_to_ref": distance
+        "COM": distance
     })
 
 # --- Export to CSV ---
 df = pd.DataFrame(results)
 df.to_csv(output_csv, index=False)
+
