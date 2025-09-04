@@ -56,9 +56,9 @@ for fname in sorted(os.listdir(docked_folder)):
         
         #print(f"MCS size: {len(atom_map)} atoms | RMSD: {rmsd:.3f}")
         results.append({
-            "ligand": fname,
-            "rmsd_mcs": rmsd,
-            "mcs_size": len(atom_map)
+            "ID": fname,
+            "rmsd": rmsd,
+            "mcs": len(atom_map)
         })
     except Exception as e:
         print(f"[!] Alignment failed for {fname}: {e}")
