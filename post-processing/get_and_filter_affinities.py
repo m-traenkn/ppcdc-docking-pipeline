@@ -5,10 +5,10 @@ import pandas as pd
 
 # === CONFIGURATION ===
 log_folder = 'GninaOut_autobox_FMN'   # Folder with *_docking.log
-output_csv = 'affinities_autobox_FMN.csv'    # Save all extracted affinities
-output_txt = "lig_higher_sub_complete.txt"   # List of ligands above threshold
-AFFINITY_THRESHOLD = -6.94                    # Reference affinity to filter against
-
+output_csv_all = 'affinities_autobox_FMN.csv'  # Save all extracted affinities
+output_csv_filtered = 'ligands_high_affinity.csv'  # Save filtered ligands with SMILES
+smiles_file = 'Components-smiles-stereo-oe.csv'  # CSV with ligand IDs and SMILES
+affinity_threshold = -6.94                  # Reference affinity to filter against
 
 # === Step 1: Extract affinities from log files ===
 results = []
@@ -17,38 +17,30 @@ for filename in os.listdir(log_folder):
         file_path = os.path.join(log_folder, filename)
         with open(file_path, 'r') as f:
             lines = f.readlines()
-
             # Extract ID from filename
             ID = filename.split('_docking')[0]
-
             # Find first docking mode (mode 1)
             for line in lines:
-                if re.match(r'^\s*1\s+', line): # get line starting with 1, model 1
+                if re.match(r'^\s*1\s+', line):
                     parts = line.split()
                     if len(parts) >= 2:
-                        affinity = float(parts[1]) # get affinity out of column 2
+                        affinity = float(parts[1])
                         results.append((ID, affinity))
                     break
 
-
 # Save all affinities to CSV
-with open(output_csv, 'w', newline='') as csvfile:
-    writer = csv.writer(csvfile)
-    writer.writerow(['ID', 'affinity'])
-    writer.writerows(results)
+df_aff = pd.DataFrame(results, columns=["ID", "affinity"])
+df_aff.to_csv(output_csv_all, index=False)
 
+# === Step 2: Filter ligands stronger than threshold ===
+df_filtered = df_aff[df_aff["affinity"] < affinity_threshold]
 
-# === STEP 2: Filter ligands stronger than threshold ===
-df = pd.DataFrame(results, columns=["ID", "affinity"])
-filtered = df[df["affinity"] < AFFINITY_THRESHOLD]
+# === Step 3: Merge with SMILES file ===
+df_smiles = pd.read_csv(smiles_file)  # Must have columns 'ID' and 'SMILES'
+df_high_affinity = df_filtered.merge(df_smiles, on="ID", how="left")
 
+# Reorder columns: ID, SMILES, affinity
+df_high_affinity = df_high_affinity[["ID", "SMILES", "affinity"]]
 
-# === STEP 3: Write list of complex filenames ===
-def write_file_list(output_file, filtered_df):
-    with open(output_file, "w") as out:
-        for ligand_id in filtered_df["ID"]:
-            filename = f"{ligand_id}_docked_complex.pdb"
-            out.write(f"{filename}\n")
-
-write_file_list(output_txt, filtered)
-
+# Save filtered ligands + SMILES to CSV
+df_high_affinity.to_csv(output_csv_filtered, index=False)
