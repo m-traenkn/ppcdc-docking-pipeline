@@ -61,7 +61,7 @@ for fname in sorted(os.listdir(docked_folder)):
         results.append({
             "ID": ligand_id,
             "RMSD": rmsd,
-            "mcs": len(atom_map)
+            "MCS": len(atom_map)
         })
     except Exception as e:
         print(f"[!] Alignment failed for {fname}: {e}")
@@ -70,6 +70,7 @@ for fname in sorted(os.listdir(docked_folder)):
 # --- Save results ---
 df = pd.DataFrame(results)
 df.to_csv(output_csv, index=False)
+
 
 
 
