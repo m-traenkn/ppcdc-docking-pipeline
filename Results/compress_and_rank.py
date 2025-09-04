@@ -56,6 +56,7 @@ df_final["combined_rank"] = df_final[[
 df_final.sort_values("combined_rank", inplace=True)
 
 # Save result
-df_final.to_csv("final_ligand_summary_complete_rmsd.csv", index=False)
+df_final.to_csv("final_ligand_summary.csv", index=False)
 
 print(df_final.head())
+
