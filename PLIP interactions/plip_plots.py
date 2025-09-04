@@ -86,7 +86,7 @@ plip_ligand_id = "UNL:Z:1" # unnamed ID within docking
 #ref_ligand_id = "9Z3:A:401"
 
 
-output_dir = Path('sorted_plots_with_reference')
+output_dir = Path('plots_with_reference')
 output_dir.mkdir(exist_ok=True)
 
 # === Parse all non-reference xmls ===
@@ -152,3 +152,4 @@ for itype in sorted(set(interaction_counters.keys()) | set(reference_residues.ke
     plt.tight_layout()
     plt.savefig(output_dir / f'{itype}_ref_colored.png')
     plt.show()
+
