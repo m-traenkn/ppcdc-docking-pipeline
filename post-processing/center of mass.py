@@ -32,6 +32,8 @@ for fname in os.listdir(dock_folder):
     path = os.path.join(dock_folder, fname)
     
     dock = Chem.MolFromPDBFile(path, removeHs=False)
+    if dock is None:
+        continue
     
     dock_com = center_of_mass(dock) # center of mass
     distance = np.linalg.norm(dock_com - ref_com) # differences between reference and docked ligand
@@ -47,5 +49,3 @@ for fname in os.listdir(dock_folder):
 # --- Export to CSV ---
 df = pd.DataFrame(results)
 df.to_csv(output_csv, index=False)
-
-
