@@ -9,7 +9,7 @@ It includes:
 
 Specific procedure:
 1. filter and cluster molecules to get rid of redundancies -> *filter_and_cluster_molecules.py*
-- Components-smiles-stereo-oe.csv to filtered_input.csv
+-- Components-smiles-stereo-oe.csv to filtered_input.csv
 
 2. docking -> *runDockingPar_Autobox.py* + run_docking_autobox.sh + all dependent scripts
 - uses filtered_input.csv, 1QZU_prediction_FMN_substrate.pdb
