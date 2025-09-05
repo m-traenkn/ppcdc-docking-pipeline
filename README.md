@@ -22,5 +22,5 @@ Specific procedure:
 - COM: *center_of_mass.py* -> calculated the COM distance between docked ligands and reference (needs single ligands without protein)
 - MCS-RMSD: *compute_mcs_rmsd_ligands.py* -> computes MCS and then MCS-RMSD between reference (single substrate without protein) and docked ligand
 - enamine: Predictions_mostSimENAMINE.csv
-- ranking: total ranking final_ligand_summary_complete.csv
+- ranking: *compress_and_rank.py* -> total ranking final_ligand_summary_complete.csv
 - robustness of ranking: *ranking_robustness.py* -> goes through all combinations of criteria and calculates overlap and Spearson coefficient of the rankings
